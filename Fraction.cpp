@@ -8,12 +8,15 @@ public:
 	Fraction();       //default constructor
 	Fraction(int n, int d);
 	void readFrac();
-	void displayFrac(); 
-	
+	void displayFrac();
+	int get_num();
+	int get_den();
 	Fraction multiply(Fraction); //multiplies two fractions to give a fraction
 
 	Fraction operator+(Fraction &);  // allows f1+f2
 	Fraction operator-(Fraction &); // allows f1-f2
+	friend istream& operator>>(istream& input, Fraction& frac);
+	friend ostream& operator<<(ostream& output, Fraction& frac);
 private:
 	int num;
 	int den;              // the numerator and denominator
@@ -30,6 +33,14 @@ Fraction::Fraction(int n, int d)  //constructor
 	num = n;
 	den = d;
 }
+int Fraction::get_num()
+{
+	return num;
+}
+int Fraction::get_den()
+{
+	return den;
+}
 void Fraction::readFrac() //gets inputted fraction
 {
 	char s;
@@ -41,7 +52,7 @@ void Fraction::displayFrac() //simplifies fraction
 	int temp;
 	int n = num;
 	int d = den;
-	
+
 	while (d != 0)
 	{
 		temp = d;
@@ -53,7 +64,7 @@ void Fraction::displayFrac() //simplifies fraction
 }
 
 
-Fraction Fraction::multiply(Fraction f) 
+Fraction Fraction::multiply(Fraction f)
 {
 	Fraction temp(num*f.num, den*f.den);
 	return temp;
