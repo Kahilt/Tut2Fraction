@@ -86,7 +86,24 @@ Fraction Fraction::operator-(Fraction &f)
 
 }
 //overloading an operator
+istream &operator>>(istream& input, Fraction& frac)
+{
+	cout << "enter a fraction in the form a/b:" << endl;
+	input >> frac.num;
+	input.ignore();
+	input >> frac.den;
 
+	return input;
+}
+
+ostream &operator<<(ostream& output, Fraction& frac)
+{
+	output << frac.get_num();
+	output << "/";
+	output << frac.get_den();
+
+	return output;
+}
 int main()
 {
 
